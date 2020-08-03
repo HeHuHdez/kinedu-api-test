@@ -2,12 +2,12 @@
 
 FactoryBot.define do
   factory :activity_log do
-    baby { nil }
-    assistant { nil }
-    activity { nil }
-    start_time { '2020-08-03 21:35:32' }
-    stop_time { '2020-08-03 21:35:32' }
-    duration { 1 }
-    comments { 'MyString' }
+    association :baby, factory: :baby, strategy: :create
+    association :assistant, factory: :assistant, strategy: :create
+    association :activity, factory: :activity, strategy: :create
+    start_time { Time.zone.now }
+    stop_time { Time.zone.now }
+    duration { nil }
+    comments { Faker::Lorem.paragraph }
   end
 end

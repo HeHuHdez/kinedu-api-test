@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :activity do
-    name { 'MyString' }
-    description { 'MyString' }
+    name { Faker::Lorem.word }
+    description { Faker::Lorem.paragraph }
   end
 end
