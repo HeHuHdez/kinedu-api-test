@@ -2,20 +2,6 @@ require:
   - rubocop-rspec
   - rubocop-rails
   - rubocop-performance
-Style/HashEachMethods:
-  Enabled: true
-Style/HashTransformKeys:
-  Enabled: true
-Style/HashTransformValues:
-  Enabled: true
-RSpec/ImplicitExpect:
-  Enabled: false
-RSpec/VariableName:
-  Enabled: false
-Rails/UniqueValidationWithoutIndex:
-  Enabled: false
-RSpec/ScatteredSetup:
-  Enabled: false
 AllCops:
   Exclude:
     - config/**/*.rb
