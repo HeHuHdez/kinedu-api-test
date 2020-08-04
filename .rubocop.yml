@@ -11,7 +11,7 @@ Metrics/BlockLength:
   Exclude:
     - 'Rakefile'
     - '**/*.rake'
-    - 'spec/**/*'
+    - 'spec/**/*.rb'
     - 'Guardfile'
 Layout/LineLength:
   Max: 120

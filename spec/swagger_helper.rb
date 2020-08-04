@@ -9,7 +9,7 @@ RSpec.configure do |config|
     'v1/swagger.yaml' => {
       swagger: '2.0',
       info: {
-        title: 'API V1. Documentation for Api Test',
+        title: 'API V1. Documentation for Kinedu api test',
         version: 'v1'
       },
       securitySchemes: {
