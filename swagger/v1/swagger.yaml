@@ -8,6 +8,657 @@ securitySchemes:
     type: http
     scheme: basic
 paths:
+  "/api/activities":
+    get:
+      summary: Index
+      description: Returns 25 activities per page, if page is not specified, then
+        the result will be the page number 1
+      tags:
+      - Activities
+      parameters:
+      - name: Authorization
+        in: header
+        default: 'Token '
+      - name: page
+        in: query
+        required: false
+        type: string
+        default: 1
+      produces:
+      - application/json
+      responses:
+        '200':
+          description: with valid auth_token
+          examples:
+            application/json:
+              data:
+              - id: '7'
+                type: activities
+                attributes:
+                  name: est
+                  description: Qui voluptatibus ut. Velit explicabo nemo. Nihil iste
+                    laborum.
+              - id: '8'
+                type: activities
+                attributes:
+                  name: corrupti
+                  description: Illum qui dolorem. Et itaque et. Iure maxime deleniti.
+              - id: '9'
+                type: activities
+                attributes:
+                  name: dolore
+                  description: Sit laudantium rem. Alias vero dolorem. Consequuntur
+                    voluptatem ut.
+              - id: '10'
+                type: activities
+                attributes:
+                  name: dolores
+                  description: Laboriosam eveniet accusantium. Ducimus qui eum. Labore
+                    aut cum.
+              - id: '11'
+                type: activities
+                attributes:
+                  name: ipsa
+                  description: Asperiores sunt molestiae. Enim ea non. Quas minima
+                    quibusdam.
+              - id: '12'
+                type: activities
+                attributes:
+                  name: quidem
+                  description: Rerum facere ipsum. Omnis pariatur aperiam. Cum voluptate
+                    illo.
+              - id: '13'
+                type: activities
+                attributes:
+                  name: eveniet
+                  description: Quia est reprehenderit. Voluptatem quisquam ex. Dolores
+                    quia et.
+              - id: '14'
+                type: activities
+                attributes:
+                  name: aliquam
+                  description: Rerum sit magnam. Voluptatem sed maiores. Eaque ipsam
+                    est.
+              - id: '15'
+                type: activities
+                attributes:
+                  name: incidunt
+                  description: Fugiat alias ex. Modi placeat illo. Rerum repudiandae
+                    officiis.
+              - id: '16'
+                type: activities
+                attributes:
+                  name: minus
+                  description: Modi quibusdam quae. Mollitia officia harum. Ipsum
+                    culpa in.
+              - id: '17'
+                type: activities
+                attributes:
+                  name: aspernatur
+                  description: Sunt reiciendis natus. Voluptatem voluptatem animi.
+                    Distinctio soluta ipsa.
+              - id: '18'
+                type: activities
+                attributes:
+                  name: quam
+                  description: Beatae tempora repudiandae. Amet consectetur molestiae.
+                    Esse autem commodi.
+              - id: '19'
+                type: activities
+                attributes:
+                  name: voluptatem
+                  description: Voluptate rerum unde. Sequi placeat et. Id est magni.
+              - id: '20'
+                type: activities
+                attributes:
+                  name: consectetur
+                  description: Accusamus nobis voluptatem. Quia culpa qui. Facere
+                    sit dolorem.
+              - id: '21'
+                type: activities
+                attributes:
+                  name: corrupti
+                  description: Quae pariatur cum. Quia sed assumenda. Sunt quibusdam
+                    qui.
+              - id: '22'
+                type: activities
+                attributes:
+                  name: animi
+                  description: Necessitatibus eligendi quia. Corporis et autem. Aliquid
+                    atque enim.
+              - id: '23'
+                type: activities
+                attributes:
+                  name: eos
+                  description: Est omnis quo. Quia animi aut. Fugiat sit labore.
+              - id: '24'
+                type: activities
+                attributes:
+                  name: dolore
+                  description: Molestiae non qui. Doloribus autem totam. Ducimus sapiente
+                    itaque.
+              - id: '25'
+                type: activities
+                attributes:
+                  name: asperiores
+                  description: Aspernatur recusandae cum. Et omnis aliquid. Ut aut
+                    voluptatem.
+              - id: '26'
+                type: activities
+                attributes:
+                  name: eum
+                  description: Quae commodi facilis. Tempora iste et. Illum non quam.
+              - id: '27'
+                type: activities
+                attributes:
+                  name: ipsam
+                  description: Modi sunt officia. Culpa iusto aut. Quaerat nihil et.
+              - id: '28'
+                type: activities
+                attributes:
+                  name: rerum
+                  description: Esse dolorum minima. Et rerum temporibus. Aut sunt
+                    et.
+              - id: '29'
+                type: activities
+                attributes:
+                  name: in
+                  description: Consectetur a fuga. Tempora non veniam. Eius at et.
+              - id: '30'
+                type: activities
+                attributes:
+                  name: ratione
+                  description: Quia quas sed. Id explicabo voluptatem. Aut quo non.
+              - id: '31'
+                type: activities
+                attributes:
+                  name: dignissimos
+                  description: Deleniti excepturi enim. Aperiam nemo adipisci. Sed
+                    ea cum.
+              links:
+                self: http://www.example.com/api/activities?page%5Bnumber%5D=1&page%5Bsize%5D=25
+                first: http://www.example.com/api/activities?page%5Bnumber%5D=1&page%5Bsize%5D=25
+                prev: 
+                next: http://www.example.com/api/activities?page%5Bnumber%5D=2&page%5Bsize%5D=25
+                last: http://www.example.com/api/activities?page%5Bnumber%5D=2&page%5Bsize%5D=25
+        '401':
+          description: invalid token
+  "/api/activity_logs":
+    post:
+      summary: Create
+      description: 'Creates a new activity_log based on baby_id, activity_id and assistant_id '
+      tags:
+      - ActivityLogs
+      parameters:
+      - name: Authorization
+        in: header
+        default: 'Token '
+      - name: params
+        in: body
+        schema:
+          type: object
+          properties:
+            activity_log:
+              baby_id:
+                type: integer
+              activity_id:
+                type: integer
+              assistan_id:
+                type: integer
+              start_time:
+                type: integer
+              stop_time:
+                type: integer
+              comments:
+                type: string
+              required:
+              - baby_id
+              - activity_id
+              - assistant_id
+              - start_time
+              example:
+                baby_id: 1
+                activity_id: 1
+                assistant_id: 1
+                start_time: '2020-08-04T03:41:15.210+0000'
+                stop_time: 
+                comments: 
+            required:
+            - activity_log
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        '201':
+          description: with valid auth_token and valid params
+          examples:
+            application/json:
+              data:
+                id: '1'
+                type: activity-logs
+                attributes:
+                  baby-id: 7
+                  assistant-id: 7
+                  activity-id: 107
+                  start-time: '2020-08-04T03:41:16.000+0000'
+        '422':
+          description: with valid auth_token and invalid params
+          examples:
+            application/json:
+              baby:
+              - must exist
+              assistant:
+              - must exist
+              activity:
+              - must exist
+        '401':
+          description: invalid token
+  "/api/activity_logs/{id}":
+    put:
+      summary: Update
+      description: Updates an activity_log
+      tags:
+      - ActivityLogs
+      parameters:
+      - name: Authorization
+        in: header
+        default: 'Token '
+      - name: id
+        in: path
+        default: 1
+        required: true
+      - name: params
+        in: body
+        schema:
+          type: object
+          properties:
+            activity_log:
+              baby_id:
+                type: integer
+              activity_id:
+                type: integer
+              assistan_id:
+                type: integer
+              start_time:
+                type: integer
+              stop_time:
+                type: integer
+              comments:
+                type: string
+              required:
+              - baby_id
+              - activity_id
+              - assistant_id
+              - start_time
+              example:
+                stop_time: '2020-08-04T03:46:15.211+0000'
+                comments: No comments
+            required:
+            - activity_log
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        '200':
+          description: with valid auth_token and valid params
+          examples:
+            application/json:
+              data:
+                id: '2'
+                type: activity-logs
+                attributes:
+                  baby-id: 8
+                  assistant-id: 8
+                  activity-id: 108
+                  start-time: '2020-08-04T03:41:16.000+0000'
+                  duration: 5
+                  comments: No comments
+                  stop-time: '2020-08-04T03:41:16.000+0000'
+        '422':
+          description: with valid auth_token and invalid params
+          examples:
+            application/json:
+              stop_time:
+              - message: The stop_time field can't be before 2020-08-04 03:41:16 UTC
+        '404':
+          description: with valid auth_token and invalid id
+          examples:
+            application/json:
+              message: Couldn't find ActivityLog with 'id'=25525252
+        '401':
+          description: invalid token
+    delete:
+      summary: Destroy
+      description: Destroys an activity_log
+      tags:
+      - ActivityLogs
+      parameters:
+      - name: Authorization
+        in: header
+        default: 'Token '
+      - name: id
+        in: path
+        default: 1
+        required: true
+      produces:
+      - application/json
+      responses:
+        '204':
+          description: with valid auth_token and valid id
+        '404':
+          description: with valid auth_token and invalid id
+          examples:
+            application/json:
+              message: Couldn't find ActivityLog with 'id'=25525252
+        '401':
+          description: invalid token
+  "/api/babies":
+    get:
+      summary: Index
+      description: Returns 25 babies per page, if page is not specified, then the
+        result will be the page number 1
+      tags:
+      - Babies
+      parameters:
+      - name: Authorization
+        in: header
+        default: 'Token '
+      - name: page
+        in: query
+        required: false
+        type: string
+        default: 1
+      produces:
+      - application/json
+      responses:
+        '200':
+          description: with valid auth_token
+          examples:
+            application/json:
+              data:
+              - id: '11'
+                type: babies
+                attributes:
+                  name: Sen. Tiffani Moore
+                  mother-name: Christoper Schuppe
+                  father-name: Rosenda Torp
+                  address: Suite 825 41645 Mills Canyon, South Wilfred, VA 01916
+                  phone: 880.403.7790
+                  age: 29
+              - id: '12'
+                type: babies
+                attributes:
+                  name: Coleman Smith
+                  mother-name: Marielle Ziemann
+                  father-name: Laura Balistreri
+                  address: Suite 590 6175 Cornelius Creek, Port Dirkmouth, WA 87939
+                  phone: 540-780-3584
+                  age: 42
+              - id: '13'
+                type: babies
+                attributes:
+                  name: The Hon. Albertine Bashirian
+                  mother-name: Jordan Kutch
+                  father-name: Ike Prosacco
+                  address: 710 Magen Corner, Port Boyce, NE 41993
+                  phone: 517-557-3478
+                  age: 43
+              - id: '14'
+                type: babies
+                attributes:
+                  name: Marilynn Harris CPA
+                  mother-name: Kyle Bartoletti
+                  father-name: Lindsey Hayes
+                  address: 88230 Rohan Valleys, Kautzerside, GA 68205-5684
+                  phone: "(392) 509-5792"
+                  age: 18
+              - id: '15'
+                type: babies
+                attributes:
+                  name: Floria Schaefer
+                  mother-name: Msgr. Carmine Hand
+                  father-name: Carrie Zemlak IV
+                  address: Apt. 578 17472 Mertz Ports, Kubland, OH 29606
+                  phone: "(518) 087-3586"
+                  age: 16
+              - id: '16'
+                type: babies
+                attributes:
+                  name: Wilber Nienow
+                  mother-name: Enrique Hermiston Jr.
+                  father-name: Gov. Neida Beahan
+                  address: Suite 128 768 Jerde Village, Fredrickashire, RI 62401-2614
+                  phone: "(916) 099-6012"
+                  age: 45
+              - id: '17'
+                type: babies
+                attributes:
+                  name: Diego Nolan
+                  mother-name: Nathan Stark
+                  father-name: Prof. Cliff Lesch
+                  address: Apt. 935 296 Geraldo Drive, Wolffort, TN 43980
+                  phone: 1-891-231-0861
+                  age: 14
+              - id: '18'
+                type: babies
+                attributes:
+                  name: Sen. Lizbeth Lesch
+                  mother-name: Mohammad Abernathy LLD
+                  father-name: Fay Murray
+                  address: Apt. 515 151 Auer Mountains, South Foster, MO 91091
+                  phone: 836.612.8334
+                  age: 12
+              - id: '19'
+                type: babies
+                attributes:
+                  name: Wilford Batz Jr.
+                  mother-name: Msgr. Wilbur Heathcote
+                  father-name: Susann Johnston I
+                  address: Apt. 187 38911 Howell Tunnel, South Marionborough, TN 97902-0507
+                  phone: "(797) 772-7854"
+                  age: 37
+              - id: '20'
+                type: babies
+                attributes:
+                  name: Noah Streich DDS
+                  mother-name: Lionel Olson VM
+                  father-name: Gennie Shanahan DC
+                  address: 718 Graham Parkways, Bergstromfurt, IL 33259
+                  phone: 768-703-7416
+                  age: 24
+              - id: '21'
+                type: babies
+                attributes:
+                  name: Iesha Quigley III
+                  mother-name: Rodrick Roob
+                  father-name: Ammie Lebsack
+                  address: Suite 542 3054 Beckie Road, New Dinohaven, VA 41147
+                  phone: 163-098-8578
+                  age: 19
+              - id: '22'
+                type: babies
+                attributes:
+                  name: August Dickens
+                  mother-name: Myrtis Wolff
+                  father-name: Darron Carroll
+                  address: 8946 Toy Tunnel, Ervinview, IN 22772-9623
+                  phone: "(603) 383-2317"
+                  age: 44
+              - id: '23'
+                type: babies
+                attributes:
+                  name: Harvey Ziemann III
+                  mother-name: Chrissy McClure Esq.
+                  father-name: Calvin Lakin
+                  address: Apt. 137 1368 Quitzon Ramp, Mitchview, MI 86784-5588
+                  phone: 1-351-930-2017
+                  age: 12
+              - id: '24'
+                type: babies
+                attributes:
+                  name: Jinny Hyatt
+                  mother-name: Ernest McGlynn
+                  father-name: Marissa Ratke
+                  address: 538 Sima Light, South Vaniamouth, MI 38076
+                  phone: "(893) 208-3602"
+                  age: 46
+              - id: '25'
+                type: babies
+                attributes:
+                  name: Amb. Hobert O'Hara
+                  mother-name: Mrs. Ezra Streich
+                  father-name: Maura Kuhic
+                  address: Suite 268 3478 Stoltenberg Pass, Port Owen, IL 04797-0967
+                  phone: 1-768-505-2035
+                  age: 23
+              - id: '26'
+                type: babies
+                attributes:
+                  name: Filomena Boyle
+                  mother-name: Hyman Hilpert I
+                  father-name: Vergie Nitzsche Esq.
+                  address: 7050 Gerri Junctions, Sharolyntown, KS 40614-9334
+                  phone: 450.743.9615
+                  age: 14
+              - id: '27'
+                type: babies
+                attributes:
+                  name: Duane Harris CPA
+                  mother-name: Mao Walsh
+                  father-name: Miss Mac Considine
+                  address: Suite 690 102 Schoen Neck, South Kendalfort, IN 33607-1133
+                  phone: 1-734-004-4771
+                  age: 36
+              - id: '28'
+                type: babies
+                attributes:
+                  name: Kaila Wiegand
+                  mother-name: Felipe Gislason Sr.
+                  father-name: Joel Haag
+                  address: 358 Dwain Isle, Port Emmett, FL 91473
+                  phone: "(704) 090-8375"
+                  age: 12
+              - id: '29'
+                type: babies
+                attributes:
+                  name: Ursula Crona
+                  mother-name: Jacob Crooks
+                  father-name: Granville Keebler
+                  address: Apt. 592 58532 Darrell Shoals, Whitneyfurt, NY 00556
+                  phone: 186.229.1862
+                  age: 47
+              - id: '30'
+                type: babies
+                attributes:
+                  name: Rev. Gertrudis Franecki
+                  mother-name: Betsy Lebsack
+                  father-name: Rodger Hermann
+                  address: 5581 Brant Views, Jewellport, WA 75236
+                  phone: "(134) 329-7633"
+                  age: 45
+              - id: '31'
+                type: babies
+                attributes:
+                  name: Thurman Lakin
+                  mother-name: Dorian Barton
+                  father-name: Jose McKenzie
+                  address: 621 Emmerich Forges, Bruenberg, AL 02258-4517
+                  phone: "(971) 002-9607"
+                  age: 43
+              - id: '32'
+                type: babies
+                attributes:
+                  name: Garth Leannon
+                  mother-name: Thomasina Ferry
+                  father-name: Derick Brown
+                  address: 322 Upton Path, Zadaport, ND 84546
+                  phone: "(580) 858-5444"
+                  age: 17
+              - id: '33'
+                type: babies
+                attributes:
+                  name: Deja Brakus
+                  mother-name: Theo Emmerich
+                  father-name: Deb Rippin Esq.
+                  address: 619 O'Conner Pine, East Faustina, MS 62857-9626
+                  phone: "(226) 622-0022"
+                  age: 21
+              - id: '34'
+                type: babies
+                attributes:
+                  name: Loraine Abernathy IV
+                  mother-name: Mrs. Richard Streich
+                  father-name: Calista Mills
+                  address: 5786 Jessica Turnpike, Dietrichmouth, NV 13131-5693
+                  phone: 437.587.9329
+                  age: 30
+              - id: '35'
+                type: babies
+                attributes:
+                  name: Cathie Schiller
+                  mother-name: Barry Grant
+                  father-name: Hipolito Mante
+                  address: 5102 Grant Extension, Felipehaven, NH 95995-7579
+                  phone: "(103) 081-1522"
+                  age: 18
+              links:
+                self: http://www.example.com/api/babies?page%5Bnumber%5D=1&page%5Bsize%5D=25
+                first: http://www.example.com/api/babies?page%5Bnumber%5D=1&page%5Bsize%5D=25
+                prev: 
+                next: http://www.example.com/api/babies?page%5Bnumber%5D=2&page%5Bsize%5D=25
+                last: http://www.example.com/api/babies?page%5Bnumber%5D=2&page%5Bsize%5D=25
+        '401':
+          description: invalid token
+  "/api/babies/{id}/activity_logs":
+    get:
+      summary: Products from order
+      description: Returns the 25 activity logs from the baby. If page is not specified,
+        then the result will be the page number 1
+      tags:
+      - Babies
+      parameters:
+      - name: Authorization
+        in: header
+        default: 'Token '
+      - name: page
+        in: query
+        required: false
+        type: string
+        default: 1
+      - name: id
+        in: path
+        default: 1
+        required: true
+      produces:
+      - application/json
+      responses:
+        '200':
+          description: with valid auth_token and valid id
+          examples:
+            application/json:
+              data:
+              - type: activity-logs
+                attributes:
+                  baby-id: 111
+                  activity-log-id: 5
+                  teacher-name: Glennis Nicolas
+                  start-time: '2020-08-04T03:41:18.000+0000'
+                  stop-time: '2020-08-04T03:46:18.000+0000'
+              links:
+                self: http://www.example.com/api/babies/111/activity_logs?page%5Bnumber%5D=1&page%5Bsize%5D=25
+                first: http://www.example.com/api/babies/111/activity_logs?page%5Bnumber%5D=1&page%5Bsize%5D=25
+                prev: 
+                next: 
+                last: http://www.example.com/api/babies/111/activity_logs?page%5Bnumber%5D=1&page%5Bsize%5D=25
+        '404':
+          description: with valid auth_token and invalid id
+          examples:
+            application/json:
+              message: Couldn't find Baby with 'id'=25525252
+        '401':
+          description: invalid token
   "/api/sessions":
     post:
       summary: Login method
@@ -39,11 +690,11 @@ paths:
           examples:
             application/json:
               data:
-                id: '4'
+                id: '15'
                 type: users
                 attributes:
-                  auth-token: N4zQ5dqNyRiS6YUFj3UfPeTd
-                  expires-at: '2020-08-05T00:38:13.000+0000'
+                  auth-token: 1wqk8egDgGtEi9oob8JB9FiY
+                  expires-at: '2020-08-05T03:41:18.000+0000'
         '401':
           description: with invalid user credentials
           examples:

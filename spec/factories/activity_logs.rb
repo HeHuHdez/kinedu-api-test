@@ -6,7 +6,7 @@ FactoryBot.define do
     association :assistant, factory: :assistant, strategy: :create
     association :activity, factory: :activity, strategy: :create
     start_time { Time.zone.now }
-    stop_time { Time.zone.now }
+    stop_time { Time.zone.now + 5.minutes }
     duration { nil }
     comments { Faker::Lorem.paragraph }
   end
