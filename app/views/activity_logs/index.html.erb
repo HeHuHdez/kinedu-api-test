@@ -1,0 +1,17 @@
+<table class=" table table-striped" data-sort-name="name" data-sort-order="desc">
+  <thead>
+    <tr>
+      <th data-field="baby_name">Bebe</th>
+      <th data-field="assistant_name">Asistente</th>
+      <th data-field="activity_name">Actividad</th>
+      <th data-field="start_time">Inicio</th>
+      <th data-field="status">Estatus</th>
+      <th data-field="duration">Duracion</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render @activity_logs %>
+  </tbody>
+</table>
+<%= paginate @activity_logs %>

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :activity_logs, only: :index
   namespace :api do
     mount Rswag::Api::Engine => '/api-docs'
     mount Rswag::Ui::Engine => '/api-docs'
@@ -14,4 +15,6 @@ Rails.application.routes.draw do
 
     resources :activity_logs, only: %i[create update destroy]
   end
+
+  root 'activity_logs#index'
 end

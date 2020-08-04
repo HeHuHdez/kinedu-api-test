@@ -12,6 +12,14 @@ class ActivityLog < ApplicationRecord
 
   before_save :update_duration, if: :stop_time?
 
+  def self.paginated_select(page)
+    page(page)
+      .select('babies.name as baby_name, assistants.name as assistant_name, activities.name as activity_name,
+      start_time, IF(stop_time, "Terminado", "En progreso") as status, duration')
+      .joins(:baby, :assistant, :activity)
+      .order(start_time: :desc)
+  end
+
   private
 
   def update_duration
