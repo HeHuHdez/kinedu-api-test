@@ -88,7 +88,7 @@ RSpec.describe 'Api::ActivityLogs', type: :request, swagger_doc: 'v1/swagger.yam
             required: %w[baby_id activity_id assistant_id start_time],
             example: {
               "stop_time": 5.minutes.from_now.strftime('%Y-%m-%dT%H:%M:%S.%L%z'),
-              "comments": "No comments"
+              "comments": 'No comments'
             }
           },
           required: ['activity_log']
@@ -167,5 +167,4 @@ RSpec.describe 'Api::ActivityLogs', type: :request, swagger_doc: 'v1/swagger.yam
       include_context 'with expired/wrong auth_token'
     end
   end
-
 end

@@ -1,3 +1,15 @@
+<h1>Bitácora de actividades</h1>
+
+Filtrar:
+<%= form_for(:activity_log, :url => { :action => "index" }, :html => {:method => :get} ) do |f| %>
+  <div>
+    Bebés: <%= select_tag "baby_name", options_for_select(@babies), {:include_blank => 'Todos'} %>
+    Asistentes: <%= select_tag "assistant_name", options_for_select(@assistants), {:include_blank => 'Todos'} %>
+    Estatus: <%= select_tag "status", options_for_select(['Todos', 'En Progreso', 'Terminado']) %>
+    <%= f.submit "Filtrar" %>
+  </div>
+<% end %>
+
 <table class=" table table-striped" data-sort-name="name" data-sort-order="desc">
   <thead>
     <tr>

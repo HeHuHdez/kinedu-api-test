@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ActivityLogSerializer < ActiveModel::Serializer
   attributes :id, :baby_id, :assistant_id, :activity_id
   attribute :start_time do
