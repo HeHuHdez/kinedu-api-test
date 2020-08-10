@@ -23,7 +23,7 @@ RSpec.describe 'Api::Babies', type: :request, swagger_doc: 'v1/swagger.yaml' do
   end
 
   path '/api/babies/{id}/activity_logs' do
-    get 'Products from order' do
+    get 'Logs from babies' do
       description 'Returns the 25 activity logs from the baby. If page is not specified, then the result will be the page number 1'
       tags 'Babies'
       parameter name: :Authorization, in: :header, default: 'Token '
